@@ -1,3 +1,15 @@
+import json
+
+def ladda_highscore():
+    try:
+        with open("data.json", "r") as f:
+            return json.load(f)
+    
+
+def spara_highscore(data):
+    with open("data.json", "w") as f:
+        json.dump(data, f, indent=4)
+
 def visa_meny():
     print("--- HÖGT/LÅGT ---")
     print("1. Spela ny omgång")
@@ -26,3 +38,6 @@ def visa_highscore():
     print("--- HIGHSCORE ---")
     for i, spelare in enumerate(highscores, start=1):
         print(f"{i}. {spelare['namn']} - {spelare['gissningar']} gissningar")
+
+data = ladda_highscore()
+print(data)
